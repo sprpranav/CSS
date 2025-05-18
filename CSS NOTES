@@ -1,0 +1,325 @@
+CSS 
+
+I) BOXES
+
+BORDER
+max-width:1000px;
+min-width:100px;
+border:2px solid red;
+
+max-height:1000px;
+min-height:100px;
+overflow:hidden;
+overflow:scroll;
+
+PADDING
+padding-top:10px;
+padding-right:20px;
+
+MARGIN
+margin:20px;
+
+DISPLAY
+display:inline;
+margin:10px;
+display:none;
+visibility:hidden;
+
+BORDER-RADIUS
+border-radius:30px;
+border-radius:80px 50px;
+box-shadow: 10px 20px 10px black;    // 10px -> horizontal offset, 20px -> vertical offset, 10px -> Blur
+border-image:url("./media.png") 30 slice; // 30 --> indicates slice value.
+border-image:url("./media.png") round; // repeat the images across the border.
+
+
+box-sizing:border-box; // Used in textfield where the input field is fixed. The length of input field won't extend.
+
+input:focus{
+background-color:red;
+}
+
+radio input{
+accent-color:#687386;
+transform:scale(1.5);  // size of radio button(the circle) gets enlarged.
+}
+
+
+II) POSITION
+
+position:static; ( By Default).
+
+position:relative;
+
+position: absolute; // The following content will be in placed in the position of absolute positioned content.
+                   //  It checks for the parent non-static element. If it finds the parent non-static element, then that element acts as 
+                       parent. If not the actual body content acts as parent and it is postioned from the  parent.
+
+
+position fixed; // It won't check for non-static element criteria. It directly positioned from the body content.
+                // If we scroll down, the position will be fixed and it is seen when we scroll down the page.
+
+position:inherit; // It inherits the parent's position.
+
+position: sticky; // Similar to fixed.
+
+
+
+
+III) FLOAT -- removes unwanted space;
+
+float:left;
+float:right;
+clear:right;
+clear:left;
+clear:both;
+
+
+
+IV) MEDIA QUERIES 
+    It is mainly used for creating a responsive webpage.
+
+    @media (min-width:800px){
+         .container p{
+                 // set rules. If the width is more than 800px then this style should be applied.
+                 width:30%;
+                     }
+                            }
+    
+   
+   @media print{
+		// set rules for printing the page.
+    }
+
+
+
+V) GRADIENT
+       background: linear-gradient(blue,green,pink,black);  // No.of colours is unlimited.
+       background: radial-gradient(blue,black);
+
+        background: linear-gradient(to left,blue,green,pink,black);
+        background: linear-gradient(to right,blue,green,pink,black);
+        background: linear-gradient(to top,blue,green,pink,black);
+        background: linear-gradient(to top right,blue,green,pink,black);
+        background: linear-gradient(to right,blue 60%,green 20%,pink,black);
+        background: linear-gradient(45deg,blue,green,pink,black);
+        background: repeating-radial-gradient(blue 20px,black 30px);
+        background: repeating-radial-gradient(blue,blue 20px,black,black 30px);
+        background: repeating-linear-gradient(blue,blue 20px,black,black 30px);
+
+
+
+VI) FLEXBOX
+        It is used for aligning the elements side by side.
+        To achieve this we need a separate container i.e., div tag.
+
+        display:flex;       
+
+        // FlexBox normally displays the element unequally.
+        So, to display the elements equally, we have to go to those elements style and give "flex:1" and "flex:1", which says to display in ratio 1:1.
+        
+        // Also we can order the paras, by giving "order:1, order:2."
+
+        // To display the flex elements column wise, we use "flex-direction:column".
+
+       
+
+       E.g.,
+
+       .container{
+             display:flex;
+             flex-direction:column;
+                 }
+       #para1{
+            flex:1;
+            order:2;
+            }
+       
+       #para2{
+            flex:2; // displays the paras in the page ratio 1:2.
+            order:1;
+            }
+
+
+
+
+       FLEXBOX DIRECTION
+             2 directions alignment: i) Main axis, ii) Cross axis.
+                 If the direction is row-wise : then horizontal is main-axis.
+                                                     vertical is cross-axis.
+       
+                 If the direction is column-wise : then horizontal is cross-axis.
+                                                     vertical is main-axis.
+                
+                  
+              If the flex-box need to be align in main-axis, then we use : "justify-content:center", or
+                                                                           "justify-content:start", or
+                                                                           "justify-content:end", or
+                                                                           "justify-content:space-between",or
+                                                                           "justify-content:space-around".
+               
+              If the flex-box need to be align in cross-axis, then we use : "align-items:center", or
+                                                                           "align-items:start", or
+                                                                           "align-items:end".
+
+           E.g.,
+          
+                 .maincontainer{
+             display:flex;
+             justify-content:center;
+             align-items:center
+                 }
+
+
+       FLEX-WRAP    // If the dimension of page reduces then, the box's width and height also changes. So, to avoid this we can use "flex-wrap:wrap".
+                    // This won't change the dimension of the box, rather it wraps the box one by one , as the page dimension decrease.
+
+       FLEX-GROW   // If the dimension of the element needs to increase as the page dimension increase, then use "flex-grow:1" // ratio.
+                   // Also, with "flex-grow", use "flex-basis:0".
+       
+       FLEX-SHRINK // If the dimension of the element needs to decrease as the page dimension decrease, then use "flex-shrink:1" // ratio.
+
+
+       FLEX SHORTHAND PROPERTY
+           flex: 1 2 0px;       // 1 represents grow ratio, 2 represents shrink ratio , and 0px represents basis.
+
+
+
+
+VII) GRID
+      Flexbox is one dimensional, either row or column.
+      To achieve grid layout, similar to flexbox have one outer container which consists of elements to be displayed in grid layout. 
+      
+      To display in columns use "grid-template-columns: 1fr 2fr 1fr; " // it is similar to ratio 1:2:1.
+      To display in rows use "grid-template-rows: 1fr 2fr 1fr; " // it is similar to ratio 1:2:1.
+
+      For having column gap and row gap use "column-gap:20px", "row-gap:10px".
+
+      E.g.,
+      .outercontainer{
+          display:grid;
+                     }
+
+
+
+    main-axis and cross-axis is suited for grid also.
+
+    If the element needs to be fitted/filled column wise then use, "grid-auto-flow:column".
+   
+
+
+   GRID COLSPAN AND ROWSPAN
+   
+  // If a particular grid/element/box need to be spanned then for column use "grid-column:1/3" which indicates that starting line is 1 and 
+  ending line is 3.
+
+    grid-column:1/3 (or)  grid-column:span 3;
+
+    grid-row:1/3 (or) grid-row:span 3;
+
+
+// GRID AREA
+   "grid-template-area:   ";
+
+
+
+
+VIII) ANIMATION AND TRANSITION
+
+   TRANSITION
+     
+      hover
+         e.g.,
+            .square{
+                  background-colour: black;}
+
+
+            .square:hover{
+                  background-colour: blue;}
+
+
+    transition-duration:10s or 10ms;
+
+        e.g.,
+		.square{
+                  background-colour: black;
+		  transition-duration;}
+
+
+   
+   transition-timing-function:ease-in (or) ease-out (or) linear.
+
+
+   transition-delay:5s;
+
+   transition-property:backgorund-colour;
+
+
+
+   ANIMATION
+    
+      e.g.,
+            .box{
+ 		width:100px;
+		height:100px;
+		background-colour:red;
+		animation-name: hello;
+		animation-duration:3s;
+		animation-fill-mode:forwards;  // Doesn't comeback to initial stage.
+		animation-iteration-count: infinte (or( any number)).
+		
+		}
+
+            @keyframes hello{
+		100%{                      // After 3 sseconds the element chnages to this.
+		background-colour:violet;
+		width:100px;
+		height:100px;
+		    } 
+
+		50%{                      // After 1.5 sseconds the element chnages to this.
+		background-colour:violet;
+		width:100px;
+		height:100px;
+		    } 
+
+ 		
+    // To move the element , we need to position:relative property.
+
+		.box{
+ 		width:100px;
+		height:100px;
+		positive:relative;
+		background-colour:red;
+		animation-name: hello;
+		animation-duration:3s;
+		animation-fill-mode:forwards;  // Doesn't comeback to initial stage.
+		animation-iteration-count: infinte (or( any number)).
+		
+		}
+		
+		  @keyframes hello{
+		100%{                      // After 3 sseconds the element chnages to this.
+		background-colour:violet;
+		width:100px;
+		height:100px;
+		top:100px;
+		left:400px;
+		    } 
+
+		50%{                      // After 1.5 sseconds the element chnages to this.
+		background-colour:violet;
+		width:100px;
+		height:100px;
+`		top:50px;
+		left:200px;
+		    } 
+
+
+
+WEBSITE : FRONTEND MENTOR
+          PEXELS.COM
+          COLOR HUNT
+          FONT AWESOME
+
+
